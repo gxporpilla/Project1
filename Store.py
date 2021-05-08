@@ -2,19 +2,24 @@ class Store:
     
     print("Welcome, User", "\n")
 
-    def displayGames():
-        print("Display all games?")
-        answer=input ("y/n = ")
-        if answer=="y":
-            print ("Tekken")
-            print ("Genshin")
-            print ("Dota") 
-            print ("LoL")
-        elif answer=="n":
-            exit()
+def displayGames(): 
+    Yes = "Y"
+    yes = "y"
+    next = Yes
+    count = 10
+    while next is Yes or yes:
+        count1 = (count-10)
+        c.execute("SELECT rowid, NAME, TAGS FROM GAMES WHERE rowid BETWEEN ? and ?", (count1,count))
+        items=c.fetchall()
+        for item in items:
+            print(item)
+
+        next = input("Next page? [y/n]")
+        if next is Yes or yes:
+            count += 10
         else:
-            print("Enter valid choice")
-            return displayGames()
+            break
+            break
     displayGames()
 
     def displayPrices():
